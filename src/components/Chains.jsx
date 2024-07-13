@@ -179,6 +179,9 @@ const Chains = () => {
           </>
         )}
       </div>
+      
+      <div>
+
       <div className="btnSection">
         <button onClick={() => handleSCroll("left")}>
           <IoIosArrowBack className="btnIcons" />
@@ -189,6 +192,7 @@ const Chains = () => {
       </div>
 
       <h3>Top restaurant chains in Hyderabad</h3>
+      </div>
       <section
         className="chainSection"
         id="chainGallery"

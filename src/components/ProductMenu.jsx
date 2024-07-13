@@ -156,6 +156,7 @@ import { API_URL } from "../pages/api";
 import { useParams } from "react-router-dom";
 import TopBar from "../components/TopBar";
 import { context } from "./store/Context";
+import { ToastContainer, toast } from "react-toastify";
 
 const ProductMenu = () => {
   const [products, setProducts] = useState([]);
@@ -181,10 +182,38 @@ const ProductMenu = () => {
     if (!alreadyInCart) {
       setCartNumber(cartNumber + 1);
       setCartedItems([...cartedItems, { ...item, quantity: 1 }]);
+      itemAdded();
     } else {
-      alert("This item is already in cart");
+      itemAlreadyAdded();
     }
   };
+
+  const itemAdded = () => {
+    toast.success('Item Added to Cart', {
+      position: "top-right",
+      autoClose: 3000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "colored",
+      transition: "Flip",
+      });
+  }
+  const itemAlreadyAdded = () => {
+    toast.success('Item Already in Cart', {
+        position: "top-right",
+        autoClose: 3000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+        transition: "Flip",
+        });
+  }
 
   return (
     <>
@@ -211,6 +240,7 @@ const ProductMenu = () => {
             </div>
           </div>
         ))}
+        <ToastContainer />
       </section>
     </>
   );

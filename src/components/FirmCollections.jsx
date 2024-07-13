@@ -156,93 +156,95 @@ const FirmCollections = () => {
 
   return (
     <>
-      <h3>Restaurants with online food delivery in Hyderabad</h3>
+      <div className="firmCollectionComponent my-5">
+        <h3>Restaurants with online food delivery in Hyderabad</h3>
 
-      <div className="filterButtons">
-        <button
-          onClick={() => {
-            filterHandler("All", "all");
-          }}
-          className={activeCategory === "all" ? "activeButton" : ""}
-        >
-          All
-        </button>
-        <button
-          onClick={() => {
-            filterHandler("South-Indian", "south-indian");
-          }}
-          className={activeCategory === "south-indian" ? "activeButton" : ""}
-        >
-          South-India
-        </button>
-        <button
-          onClick={() => {
-            filterHandler("North-Indian", "North-indian");
-          }}
-          className={activeCategory === "North-indian" ? "activeButton" : ""}
-        >
-          North-India
-        </button>
-        <button
-          onClick={() => {
-            filterHandler("Chinese", "chinese");
-          }}
-          className={activeCategory === "chinese" ? "activeButton" : ""}
-        >
-          Chinese
-        </button>
-        <button
-          onClick={() => {
-            filterHandler("Bakery", "bakery");
-          }}
-          className={activeCategory === "bakery" ? "activeButton" : ""}
-        >
-          Bakery
-        </button>
-      </div>
-      <section className="firmSection">
-        {firmData.map((apple) => {
-          return (
-            <React.Fragment key={apple._id}>
-              {apple.firm.map((item) => {
-                if (
-                  selectRegion === "All" ||
-                  item.region.includes(selectRegion.toLocaleLowerCase())
-                ) {
-                  return (
-                    <Link
-                      to={`/products/${item._id}/${item.firmName}`}
-                      className="link"
-                      key={item._id}
-                    >
-                      <div className="zoomEffect">
-                        <div className="firmGroupBox">
-                          <div className="firmGroup">
-                            <img
-                              src={`${API_URL}/uploads/${item.image}`}
-                              alt=""
-                            />
-                            <div className="firmOffer">{item.offer}</div>
-                          </div>
-                          <div className="firmDetails">
-                            <div className="firmName">
-                              <strong>{item.firmName}</strong>
+        <div className="filterButtons">
+          <button
+            onClick={() => {
+              filterHandler("All", "all");
+            }}
+            className={activeCategory === "all" ? "activeButton btn btn-info" : ""}
+          >
+            All
+          </button>
+          <button
+            onClick={() => {
+              filterHandler("South-Indian", "south-indian");
+            }}
+            className={activeCategory === "south-indian" ? "activeButton btn btn-info" : ""}
+          >
+            South-India
+          </button>
+          <button
+            onClick={() => {
+              filterHandler("North-Indian", "North-indian");
+            }}
+            className={activeCategory === "North-indian" ? "activeButton btn btn-info" : ""}
+          >
+            North-India
+          </button>
+          <button
+            onClick={() => {
+              filterHandler("Chinese", "chinese");
+            }}
+            className={activeCategory === "chinese" ? "activeButton btn btn-info" : ""}
+          >
+            Chinese
+          </button>
+          <button
+            onClick={() => {
+              filterHandler("Bakery", "bakery");
+            }}
+            className={activeCategory === "bakery" ? "activeButton btn btn-info" : ""}
+          >
+            Bakery
+          </button>
+        </div>
+        <section className="firmSection">
+          {firmData.map((apple) => {
+            return (
+              <React.Fragment key={apple._id}>
+                {apple.firm.map((item) => {
+                  if (
+                    selectRegion === "All" ||
+                    item.region.includes(selectRegion.toLocaleLowerCase())
+                  ) {
+                    return (
+                      <Link
+                        to={`/products/${item._id}/${item.firmName}`}
+                        className="link"
+                        key={item._id}
+                      >
+                        <div className="zoomEffect">
+                          <div className="firmGroupBox">
+                            <div className="firmGroup">
+                              <img
+                                src={`${API_URL}/uploads/${item.image}`}
+                                alt=""
+                              />
+                              <div className="firmOffer">{item.offer}</div>
                             </div>
-                            <div className="firmArea">
-                              {item.region.join(", ")}
+                            <div className="firmDetails">
+                              <div className="firmName">
+                                <strong>{item.firmName}</strong>
+                              </div>
+                              <div className="firmArea">
+                                {item.region.join(", ")}
+                              </div>
+                              <div className="firmArea">{item.area}</div>
                             </div>
-                            <div className="firmArea">{item.area}</div>
                           </div>
                         </div>
-                      </div>
-                    </Link>
-                  );
-                }
-              })}
-            </React.Fragment>
-          );
-        })}
-      </section>
+                      </Link>
+                    );
+                  }
+                })}
+              </React.Fragment>
+            );
+          })}
+        </section>
+      </div>
     </>
   );
 };

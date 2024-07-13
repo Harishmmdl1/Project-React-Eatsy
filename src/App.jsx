@@ -40,6 +40,10 @@ import Search from "./components/Search";
 import Cart from "./components/Cart";
 import ContextProvider from "./components/store/Context";
 import Register from "./components/Register";
+import Profile from "./components/Profile";
+import 'react-toastify/dist/ReactToastify.css';
+import ConfirmAddress from "./components/ConfirmAddress";
+import OrderSuccess from "./components/OrderSuccess";
 
 const App = () => {
   return (
@@ -53,6 +57,9 @@ const App = () => {
             
             <Route path="/signupLogin" element={<SignupLogin />} />
             <Route path="/register" element={<Register />} />
+            <Route path="/profile" element={<Profile />} />
+            <Route path="/confirmAddress" element={<ConfirmAddress />} />
+            <Route path="/orderSuccess" element={<OrderSuccess />} />
             <Route
               path="/products/:firmId/:firmName"
               element={<ProductMenu />}
