@@ -16,13 +16,7 @@ const OrderSuccess = () => {
         <TopBar />
         <div className="order-success-component d-flex flex-column align-items-center justify-content-center vh-100">
           <div className="text-center">
-            <div className="mb-4">
-              <img
-                src="your-image-url.png"
-                alt="Order Success"
-                className="img-fluid"
-              />
-            </div>
+            
             <h1 className="display-4 text-success">THANK YOU</h1>
             <h2 className="text-secondary">FOR YOUR ORDER</h2>
             <p className="mt-4">

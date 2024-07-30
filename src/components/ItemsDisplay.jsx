@@ -1,24 +1,21 @@
-import React, { useState } from 'react'
-import { itemData } from '../pages/data'
+import React, { useState } from 'react';
+import { itemData } from '../pages/data';
+
 
 const ItemsDisplay = () => {
-
-        const [displayItem, setDisplayItem] = useState(itemData);
+  const [displayItem] = useState(itemData);
 
   return (
     <div className='itemSection'>
-        {
-            displayItem.map((item, index) => {
-                return(
-                    <div className="gallery" key={index}>
-                        <img src={item.item_img} alt={item.item_img}  />
-                    </div>
-                )
-            })
-        }
-
+      <div className='scroll-container'>
+        {displayItem.concat(displayItem).map((item, index) => (
+          <div className="gallery" key={index}>
+            <img src={item.item_img} alt={`Item ${index}`} />
+          </div>
+        ))}
+      </div>
     </div>
-  )
+  );
 }
 
-export default ItemsDisplay
+export default ItemsDisplay;

@@ -4,10 +4,12 @@ import { Link } from "react-router-dom";
 import TopBar from "./TopBar";
 import { MagnifyingGlass } from "react-loader-spinner";
 import { FiSearch } from "react-icons/fi";
+import Footer from "./Footer";
 
 const Search = () => {
   const [firmData, setFirmData] = useState([]);
   const [searchQuery, setSearchQuery] = useState("");
+  const [loading, setLoading] = useState(true);
 
   const firmDataHandler = async () => {
     try {
@@ -17,6 +19,8 @@ const Search = () => {
     } catch (error) {
       alert("Firm data not fetched");
       console.log("Firm data not fetched", error);
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -30,11 +34,15 @@ const Search = () => {
     )
   );
 
+  const handleImageError = (e) => {
+    e.target.src = '/assets/item/defaultrestorent.jpg'; // Set the path to your default image
+  };
+
   return (
     <>
       <TopBar />
 
-      <div className="searchComponent mx-5">
+      <div className="searchComponent my-3">
         <div className="d-flex align-items-center justify-content-center">
           <input
             type="text"
@@ -46,11 +54,29 @@ const Search = () => {
           <FiSearch className="searchCompsymbol" />
         </div>
 
-        <div className="mx-5">
-          <h3>Go for Your Favourite Food or Restaurants</h3>
-          <section className="firmSection searchFirmSection m-4">
-            {filteredFirms.length > 0 ? (
-              <>
+        <div className="mx-5 text-center">
+          {loading ? (
+            <div className="d-flex justify-content-center my-5">
+              <div className="loader ">🍽️ Fetching Delicious Meals...</div>
+              <MagnifyingGlass
+                visible={true}
+                height="80"
+                width="80"
+                ariaLabel="magnifying-glass-loading"
+                wrapperStyle={{}}
+                wrapperClass="magnifying-glass-wrapper"
+                glassColor="#c0efff"
+                color="#e15b64"
+              />
+            </div>
+          ) : searchQuery && filteredFirms.length === 0 ? (
+            <div className="d-flex justify-content-center">
+              <div>No match found for "{searchQuery} "</div>
+            </div>
+          ) : (
+            <>
+              <h3>Go for Your Favourite Food or Restaurants</h3>
+              <section className="firmSection searchFirmSection m-4">
                 {filteredFirms.map((item) => (
                   <Link
                     to={`/products/${item._id}/${item.firmName}`}
@@ -63,8 +89,9 @@ const Search = () => {
                           <img
                             src={`${API_URL}/uploads/${item.image}`}
                             alt=""
+                            onError={handleImageError}
                           />
-                          <div className="firmOffer">{item.offer}</div>
+                          <div className="firmOfferSearch">{item.offer}</div>
                         </div>
                         <div className="firmDetails">
                           <div className="firmName">
@@ -79,25 +106,12 @@ const Search = () => {
                     </div>
                   </Link>
                 ))}
-              </>
-            ) : (
-              <div className="d-flex justify-content-center">
-                <div className="loader">🍽️ Fetching Delicious Meals...</div>
-                <MagnifyingGlass
-                  visible={true}
-                  height="80"
-                  width="80"
-                  ariaLabel="magnifying-glass-loading"
-                  wrapperStyle={{}}
-                  wrapperClass="magnifying-glass-wrapper"
-                  glassColor="#c0efff"
-                  color="#e15b64"
-                />
-              </div>
-            )}
-          </section>
+              </section>
+            </>
+          )}
         </div>
       </div>
+      <Footer />
     </>
   );
 };

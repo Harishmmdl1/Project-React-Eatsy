@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { Link, useNavigate } from "react-router-dom";
 import TopBar from "./TopBar";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const Register = () => {
   const navigate = useNavigate();
@@ -21,32 +23,121 @@ const Register = () => {
     const phoneRegex = /^\d{10}$/;
 
     if (!user.name) {
-      alert("Please enter your name.");
+      toast.info('Please enter your name.', {
+        position: "top-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+        });
       return;
     }
     if (!emailRegex.test(user.email)) {
-      alert("Please enter a valid email.");
+      toast.info('Please enter your email.', {
+        position: "top-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+        });
       return;
     }
     if (!phoneRegex.test(user.phone)) {
-      alert("Please enter a valid 10-digit phone number.");
+      toast.info('Please enter a valid 10-digit phone number.', {
+        position: "top-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+        });
       return;
     }
     if (user.password.length < 8) {
-      alert("Password must be at least 8 characters long.");
+      toast.info('Password must be at least 8 characters long.', {
+        position: "top-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "colored",
+        });
       return;
     }
 
     let userDetails = JSON.parse(localStorage.getItem("use")) || [];
 
     // Check if email or phone already exists
-    const existingUser = userDetails.find(
-      (u) => u.email === user.email || u.phone === user.phone
+    const existingUserEmail = userDetails.find(
+      (u) => u.email === user.email
     );
-    if (existingUser) {
-      alert("Email or phone number already exists.");
+    if (existingUserEmail) {
+      toast.warn('Email is already exists.', {
+            position: "top-right",
+            autoClose: 5000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            theme: "colored",
+            });
       return;
     }
+    const existingUserPhone = userDetails.find(
+      (u) => u.phone === user.phone
+    );
+    if (existingUserPhone) {
+      toast.warn('Phone number is already exists.', {
+              position: "top-right",
+              autoClose: 5000,
+              hideProgressBar: false,
+              closeOnClick: true,
+              pauseOnHover: true,
+              draggable: true,
+              progress: undefined,
+              theme: "colored",
+              });
+      return;
+    }
+
+    // if(userDetails.email === user.email){
+    //   toast.warn('Email is already exists.', {
+    //     position: "top-right",
+    //     autoClose: 5000,
+    //     hideProgressBar: false,
+    //     closeOnClick: true,
+    //     pauseOnHover: true,
+    //     draggable: true,
+    //     progress: undefined,
+    //     theme: "colored",
+    //     });
+    //     return;
+    //   }
+    //   else if(userDetails.phone === user.phone){
+    //     toast.warn('Phone number is already exists.', {
+    //       position: "top-right",
+    //       autoClose: 5000,
+    //       hideProgressBar: false,
+    //       closeOnClick: true,
+    //       pauseOnHover: true,
+    //       draggable: true,
+    //       progress: undefined,
+    //       theme: "colored",
+    //       });
+    //   return;
+
+    
 
     userDetails.push(user);
     localStorage.setItem("use", JSON.stringify(userDetails));
@@ -131,7 +222,7 @@ const Register = () => {
 
                     <div className="d-flex justify-content-center align-items-center mt-4">
                       Already a Customer....!
-                      <Link className=" ps-3 fs-5" to="/signupLogin">
+                      <Link className=" ps-3 fs-5 text-decoration-none" to="/signupLogin">
                         Login
                       </Link>
                     </div>
@@ -140,6 +231,7 @@ const Register = () => {
               </div>
             </div>
           </div>
+          <ToastContainer />
         </div>
       </div>
     </>

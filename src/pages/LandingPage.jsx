@@ -13,8 +13,8 @@ const LandingPage = () => {
         <ItemsDisplay />
         <Chains />
         <FirmCollections />
-        <Footer />
       </div>
+        <Footer />
     </div>
   );
 };

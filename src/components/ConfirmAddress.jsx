@@ -1,9 +1,14 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import TopBar from "./TopBar";
 import { useNavigate } from "react-router-dom";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import { context } from "./store/Context";
 
 const ConfirmAddress = () => {
+
+  const {  setCartNumber, setCartedItems } = useContext(context);
   const [address, setAddress] = useState({
     addressLine1: "",
     addressLine2: "",
@@ -71,13 +76,22 @@ const ConfirmAddress = () => {
       !address.state ||
       !validatePostalCode(address.postalCode)
     ) {
-      alert(
-        "Please fill in all required fields and ensure postal code is valid."
-      );
+      toast.warn('Please fill in all required fields and ensure postal code is valid.', {
+        position: "top-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "colored",
+        });
       return;
     }
 
-    navigate("/orderSuccess")
+    navigate("/orderSuccess");
+            setCartedItems([]);
+        setCartNumber(0);
     
   };
 
@@ -177,6 +191,7 @@ const ConfirmAddress = () => {
               </div>
             </div>
           </div>
+          <ToastContainer />
         </div>
       </div>
     </>

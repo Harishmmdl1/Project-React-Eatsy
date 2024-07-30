@@ -3,6 +3,8 @@
   import { Link, useNavigate } from "react-router-dom";
   import { context } from "./store/Context";
   import TopBar from "./TopBar";
+  import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
   const SignupLogin = () => {
     const { loggin, setLoggin } = useContext(context);
@@ -14,10 +16,20 @@
     console.log(users);
 
     const handleLogin = (e) => {
+     
       e.preventDefault();
 
       if (!login.name || !login.password) {
-        alert("Please fill in both fields");
+        toast.error('Please fill in both fields', {
+          position: "top-right",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "dark",
+          });
         return;
       }
 
@@ -32,7 +44,16 @@
         setLoggin(true);
         navigate("/");
       } else {
-        alert("Invalid Email and Password");
+        toast.error('Invalid Email and Password', {
+          position: "top-right",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "colored",
+          });
       }
     };
 
@@ -48,7 +69,7 @@
                     <h3 className="card-title text-center">Login</h3>
                     <form className="p-4">
                       <div className="form-group m-2">
-                        <label htmlFor="name">Name</label>
+                        <label htmlFor="name">Username</label>
                         <input
                           value={login.name}
                           onChange={(e) =>
@@ -86,8 +107,8 @@
                       </div>
                       <div className="d-flex justify-content-center align-items-center mt-3">
 
-                      New User ...?
-                      <Link className="ps-3 fs-5" to="/register">
+                      New User ?
+                      <Link className="ps-3 fs-5 text-decoration-none" to="/register">
                         Create a Account
                       </Link>
                       </div>
@@ -96,6 +117,7 @@
                 </div>
               </div>
             </div>
+            <ToastContainer />
           </div>
         </div>
       </>

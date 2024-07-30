@@ -31,7 +31,7 @@
 import React from "react";
 import LandingPage from "./pages/LandingPage";
 import "./App.css";
-import "bootstrap/dist/css/bootstrap.min.css";
+
 import { Route, Routes } from "react-router-dom";
 import ProductMenu from "./components/ProductMenu";
 import Help from "./components/Help";
