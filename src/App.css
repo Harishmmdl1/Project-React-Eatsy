@@ -88,7 +88,7 @@ body {
 
 .gallery {
   flex: 0 0 auto;
-  width: calc(100% / 7); /* Adjust based on the number of images to fit in the view */
+  /* width: calc(100% / 7); Adjust based on the number of images to fit in the view */
   margin-right: 20px; /* Adjust gap between images */
 }
 
@@ -178,154 +178,7 @@ body {
   }
 
 } */
-@media (max-width:1024px){
-  .firmSection{
-    grid-template-columns: repeat(3, 1fr);  
-  }
-  .firmOffer{
-    max-width: 95% !important;
-  }
-  .firmOfferSearch{
-    max-width: 88% !important;
-    left: 16px !important;
-  }
-  .itemSection{
-    height: 140px;
-  }
-  .vendorBox img {
-    width: 300px;
-    height: 200px;
-  }
-  .landingSection {
-    padding: 0 100px;
-  }
-}
-@media (max-width:768px){
-  .firmSection{
-    grid-template-columns: repeat(2, 1fr);  
-  }
-  .firmOffer{
-    max-width: 86% !important;
-  }
-  .firmOfferSearch{
-    max-width: 80% !important;
-    left: 28px !important;
-  }
-  .cartbox{
-    flex-direction: column;
-    align-items: center;
-  }
-  .itemSection{
-    height: 90px;
-  }
-  .footer-top {
-    padding: 20px 50px !important;
-  }
-  .vendorBox img {
-    width: 250px;
-    height: 160px;
-  }
-  .cartSummary{
-    width: 35% !important;
-    margin-top: 20px;
-  }
-  .productSection {
-    padding: 0 100px !important;
-  }
-  .landingSection {
-    padding: 0 90px;
-  }
-}
-@media (max-width:426px){
-  .firmSection{
-    grid-template-columns: repeat(1, 1fr);
-    justify-content: center;
-    margin-top: 15px;
-  }
-  .firmOffer{
-    max-width: 81% !important;
-  }
-  .firmOfferSearch{
-    max-width: 82% !important;
-    left: 26px !important;
-  }
-  .itemSection{
-    display: none;
-  }
-  .vendorBox img {
-    width: 200px;
-    height: 140px;
-  }
-  
-  .filterButtons button{
-  width:5rem !important;
-  margin: 10px 0 !important ;
-  padding:  0 !important;
-}
-.filterButtons {
-  display: grid !important;
-  grid-template-columns: repeat(3,1fr) !important;
-  gap: 5px !important;
-}
-.btnSection {
-  top: 60px;
-  left: 10px;
-  gap: 0;
-}
-.landingSection {
-  padding: 0 70px;
-}
-.productSection {
-  padding: 0 30px !important;
-}
 
-.cartSummary{
-  width: 65% !important;
-  margin-top: 20px;
-}
-
-.cartComponent{
-  padding: 0 !important;
-}
-.cartItems{
-  margin: 0 !important;
-  padding: 0 !important;
-}
-.cartbox{
-
-}
-}
-
-@media (max-width:376px){
-
-  .firmOffer{
-    max-width: 98% !important;
-  }
-  .firmOfferSearch{
-    max-width: 100% !important;
-    left: 0 !important;
-  }
-  .productSection {
-    padding: 0 10px !important;
-  }
-  .cartSummary{
-    width: 65% !important;
-    margin-top: 20px;
-  }
-}
-@media (max-width:321px){
-
-  .firmOffer{
-    max-width: 100% !important;
-  }
-  .firmOfferSearch{
-    max-width: 100% !important;
-    left: 0 !important;
-  }
-  .productSection {
-    padding: 0 !important;
-  }
-}
 
 /* media queries for Cart */
 /* Cart.css */
@@ -431,8 +284,8 @@ body {
   position: relative;
 }
 .firmGroup img {
-  width: 230px;
-  height: 180px;
+  width: 100%;
+  height: 320px;
   flex: 0 0 auto;
   object-fit: cover;
   border-radius: 10px;
@@ -471,7 +324,7 @@ body {
   bottom: 0;
   left: 0;
   width: 100%;
-  max-width: 96%;
+  /* max-width: 96%;   */
   padding-left: 10px;
   font-size: 0.9rem;
   font-weight: 800;
@@ -882,5 +735,162 @@ body {
 
 .footer-section ul li a:hover {
   text-decoration: underline;
+  }
+  
+  @media (max-width:1440px){
+  .firmGroup img{
+    height: 210px;
+  }
+
+}
+@media (max-width:1024px){
+  .firmSection{
+    grid-template-columns: repeat(3, 1fr);  
+  }
+  .firmOffer{
+    /* max-width: 95% !important; */
+  }
+  .firmOfferSearch{
+    max-width: 88% !important;
+    left: 16px !important;
+  }
+  .itemSection{
+    height: 140px;
+  }
+  .vendorBox img {
+    width: 300px;
+    height: 200px;
+  }
+  .landingSection {
+    padding: 0 100px;
+  }
+  .firmGroup img{
+    height: 200px;
+  }
+}
+@media (max-width:768px){
+  .firmSection{
+    grid-template-columns: repeat(2, 1fr);  
+  }
+  .firmOffer{
+    /* max-width: 86% !important; */
+  }
+  .firmOfferSearch{
+    max-width: 80% !important;
+    left: 28px !important;
+  }
+  .cartbox{
+    flex-direction: column;
+    align-items: center;
+  }
+  .itemSection{
+    height: 90px;
+  }
+  .footer-top {
+    padding: 20px 50px !important;
+  }
+  .vendorBox img {
+    width: 250px;
+    height: 160px;
+  }
+  .cartSummary{
+    width: 35% !important;
+    margin-top: 20px;
+  }
+  .productSection {
+    padding: 0 100px !important;
+  }
+  .landingSection {
+    padding: 0 90px;
+  }
+}
+@media (max-width:426px){
+  .firmSection{
+    grid-template-columns: repeat(1, 1fr);
+    justify-content: center;
+    margin-top: 15px;
+  }
+  .firmOffer{
+    /* max-width: 81% !important; */
+  }
+  .firmOfferSearch{
+    max-width: 82% !important;
+    left: 26px !important;
+  }
+  .itemSection{
+    display: none;
+  }
+  .vendorBox img {
+    width: 200px;
+    height: 140px;
+  }
+  
+  .filterButtons button{
+  width:5rem !important;
+  margin: 10px 0 !important ;
+  padding:  0 !important;
+}
+.filterButtons {
+  display: grid !important;
+  grid-template-columns: repeat(3,1fr) !important;
+  gap: 5px !important;
+}
+.btnSection {
+  top: 60px;
+  left: 10px;
+  gap: 0;
+}
+.landingSection {
+  padding: 0 70px;
+}
+.productSection {
+  padding: 0 30px !important;
 }
 
+.cartSummary{
+  width: 65% !important;
+  margin-top: 20px;
+}
+
+.cartComponent{
+  padding: 0 !important;
+}
+.cartItems{
+  margin: 0 !important;
+  padding: 0 !important;
+}
+.cartbox{
+
+}
+}
+
+@media (max-width:376px){
+
+  .firmOffer{
+    /* max-width: 98% !important; */
+  }
+  .firmOfferSearch{
+    max-width: 100% !important;
+    left: 0 !important;
+  }
+  .productSection {
+    padding: 0 10px !important;
+  }
+  .cartSummary{
+    width: 65% !important;
+    margin-top: 20px;
+  }
+}
+@media (max-width:321px){
+
+  .firmOffer{
+    /* max-width: 100% !important; */
+  }
+  .firmOfferSearch{
+    max-width: 100% !important;
+    left: 0 !important;
+  }
+  .productSection {
+    padding: 0 !important;
+  }
+}
